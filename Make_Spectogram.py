@@ -14,7 +14,7 @@ def scale_minmax(X, min=0.0, max=1.0) -> int:
     return X_scaled
 
 
-def spectrogram_image(y, sr: , out: string, hop_length: int, n_mels):
+def spectrogram_image(y, sr: int, out: string, hop_length: int, n_mels):
     # use log-melspectrogram
     mels = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=n_mels,
                                           n_fft=hop_length * 2, hop_length=hop_length)  # y = window
