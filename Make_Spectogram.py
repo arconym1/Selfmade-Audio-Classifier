@@ -8,13 +8,13 @@ import skimage.io
 path: str = "../PathToYourWavs"
 
 
-def scale_minmax(X, min=0.0, max=1.0) -> int:
+def scale_minmax(X, min=0.0, max=1.0) -> float:
     X_std: int = (X - X.min()) / (X.max() - X.min())
-    X_scaled: int = X_std * (max - min) + min
+    X_scaled: float = X_std * (max - min) + min
     return X_scaled
 
 
-def spectrogram_image(y, sr: int, out: string, hop_length: int, n_mels):
+def spectrogram_image(y, sr: int, out: str, hop_length: int, n_mels):
     # use log-melspectrogram
     mels = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=n_mels,
                                           n_fft=hop_length * 2, hop_length=hop_length)  # y = window
@@ -37,7 +37,7 @@ def main():
     for file in os.listdir(path):
         y, sr = librosa.load(path +
                              file, offset=1.0, duration=10.0, sr=22050)  # sr = 22050 hz (sampling rate)
-        out: string = f"WhereToSaveData/{file}.png"
+        out: str = f"WhereToSaveData/{file}.png"
         # extract a fixed length window ->
         start_sample: int = 0  # starting at beginning
         length_samples: int = time_steps * hop_length
