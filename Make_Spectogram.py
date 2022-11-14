@@ -37,7 +37,7 @@ def main():
     for file in os.listdir(path):
         y, sr = librosa.load(path +
                              file, offset=1.0, duration=10.0, sr=22050)  # sr = 22050 hz (sampling rate)
-        out: string = f"WhereToSaveData{n}.png"
+        out: string = f"WhereToSaveData/{file}.png"
         # extract a fixed length window ->
         start_sample: int = 0  # starting at beginning
         length_samples: int = time_steps * hop_length
