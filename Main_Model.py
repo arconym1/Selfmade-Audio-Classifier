@@ -8,9 +8,9 @@ from tensorflow.keras import layers
 import cv2
 
 
-def create_training_data(Categories, Data_dir, training_data):
+def create_training_data(Categories: list, Data_dir: str, training_data: list):
     for category in Categories:
-        path = os.path.join(Data_dir, category)
+        path: str = os.path.join(Data_dir, category)
         class_num = Categories.index(category)
         for img in os.listdir(path):
             try:
@@ -23,9 +23,9 @@ def create_training_data(Categories, Data_dir, training_data):
 
 
 def train():
-    Data_dir = "DirectoryOfYourData"
-    Categories = ["Your", "Categories"] # As many Categories as you want
-    training_data = []
+    Data_dir: str = "DirectoryOfYourData"
+    Categories: list = ["Your", "Categories"] # As many Categories as you want
+    training_data: list = []
 
     create_training_data(Categories, Data_dir, training_data)
     random.shuffle(training_data)
